@@ -5,3 +5,5 @@ raylib-master
 **.sln
 **.vcxproj
 **.vcxproj.**
+game/rasterizer.xcodeproj
+rasterizer.xcworkspace

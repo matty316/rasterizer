@@ -1,6 +1,6 @@
 #include "common.h"
 
-void main() { 
+int main() {
     InitWindow(screen_width, screen_height, "rasterizer");
 
     SetTargetFPS(60);
@@ -11,6 +11,7 @@ void main() {
         Vector2 p0(-200, -250);
         Vector2 p1(200, 50);
         Vector2 p2(20, 250);
+        draw_filled_triangle(p0, p1, p2, GREEN);
         draw_wireframe_triangle(p0, p1, p2, BLACK);
         EndDrawing();
     }

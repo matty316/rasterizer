@@ -1,47 +1,17 @@
-#include "game.h"
-#include "player.h"
-#include "raylib.h"
+#include "common.h"
 
-int map[] = {
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,    
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-};
-
-void main() {
-    run();
-}
-
-void drawMap() {
-    int width = 12;
-    int height = 8;
-    for (int i = 0; i < width * height; i++) {
-        int tile = map[i];
-        int x = i % width;
-        int y = i / width;
-
-        if (tile > 0) {
-            DrawRectangle(x * 100.0f, y * 100.0f, 100.0f, 100.0f, RED);
-        }
-    }
-}
-
-void run() {
-    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Hell Yeah");
+void main() { 
+    InitWindow(screen_width, screen_height, "rasterizer");
 
     SetTargetFPS(60);
 
     while (!WindowShouldClose()) {
-        updatePlayer();
         BeginDrawing();
         ClearBackground(LIGHTGRAY);
-        drawMap();
-        drawPlayer();
+        Vector2 p0(-200, -250);
+        Vector2 p1(200, 50);
+        Vector2 p2(20, 250);
+        draw_wireframe_triangle(p0, p1, p2, BLACK);
         EndDrawing();
     }
     CloseWindow();

@@ -5,14 +5,25 @@ int main() {
 
     SetTargetFPS(60);
 
+    model cube;
+    cube.type = CUBE;
+    instance instance1;
+    instance1.model = &cube;
+    instance1.position = { -1.5, 0, 7 };
+    instance instance2;
+    instance2.model = &cube;
+    instance2.position = { 1.25, 2, 7.5 };
+
+    scene scene;
+    scene.instances.push_back(instance1);
+    scene.instances.push_back(instance2);
+
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(LIGHTGRAY);
-        Vector2 p0(-200, -250);
-        Vector2 p1(200, 50);
-        Vector2 p2(20, 250);
-        draw_filled_triangle(p0, p1, p2, GREEN);
-        draw_wireframe_triangle(p0, p1, p2, BLACK);
+        
+        render_scene(scene);
+        
         EndDrawing();
     }
     CloseWindow();
